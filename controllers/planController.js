@@ -10,6 +10,7 @@ const getPlan = async (req, res) => {
             info: panoramas
         })
     } catch (error) {
+        console.error(error)
         res.status(500).json({
             success: false,
             message: 'error en el servidor'
@@ -37,6 +38,7 @@ const createPlan = async (req, res) => {
         await newPlan.save();
         res.status(201).json({ success: true, message: 'nuevo panorama creado', info: newPlan })
     } catch (error) {
+        console.error(error)
         res.status(500).json({ succees: false, message: error.message });
     }
 };
@@ -80,3 +82,5 @@ const deletePlan = async (req, res) => {
     }
 
 }
+
+module.exports = {getPlan, getPlanById, createPlan, editPlan, deletePlan};

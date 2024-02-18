@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 
 const planSchema = new mongoose.Schema({
     titulo : { type: String, require: true},
-    descripcion: {type: Number, require: true },
+    descripcion: {type: String, require: true },
     fecha:{type:String, require:true},
     lugar:{type:String, require:true},
-    tipo: String
+    imagen:{type: String},
+    tipo: String,
+
 });
 
-const Plan = mongoose.modelo('panoramas', planSchema);
+const Plan = mongoose.model('panoramas', planSchema);
 
-module.exports = Plan
+module.exports = Plan;

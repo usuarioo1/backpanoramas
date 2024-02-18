@@ -1,6 +1,9 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
+const bbdd = require('./config/database');
+const planRouter = require('./routes/panoramaRouter');
+
 
 //llamar a express
 const app = express();
@@ -9,8 +12,12 @@ app.use(cors());
 //SERVIDOTR ENTIENDA JSON
 app.use(express.json());
 
-//Rutas
 
+//Rutas
+app.use(planRouter);
+//BBDD
+
+bbdd();
 
 
 // LEVANTAMIENTO DEL SERVIDO
