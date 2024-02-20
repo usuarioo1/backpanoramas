@@ -4,5 +4,6 @@ const {getPlan, getPlanById, createPlan, editPlan, deletePlan} = require('../con
 
 planRouter.route('/panoramas').get(getPlan);
 planRouter.route('/crearpanorama').post(createPlan);
+planRouter.route('/panoramas/:id').delete(deletePlan);
 
 module.exports = planRouter;

@@ -1,20 +1,27 @@
 const Plan = require('../models/planSchema');
 
 const getPlan = async (req, res) => {
-
     try {
-        const panoramas = await Plan.find();
+        const { tipo } = req.query; // Obtén el parámetro de tipo de la consulta
+        let panoramas;
+
+        if (tipo) {
+            panoramas = await Plan.find({ tipo: tipo }); // Filtra los panoramas por tipo si se proporciona el parámetro
+        } else {
+            panoramas = await Plan.find(); // Obtén todos los panoramas si no se proporciona el parámetro
+        }
+
         res.json({
             success: true,
-            message: 'lista de panoramas',
+            message: 'Lista de panoramas',
             info: panoramas
-        })
+        });
     } catch (error) {
-        console.error(error)
+        console.error(error);
         res.status(500).json({
             success: false,
-            message: 'error en el servidor'
-        })
+            message: 'Error en el servidor'
+        });
     }
 };
 
